@@ -1,2 +1,8 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="container">
+  <div class="posts">
+    <% @posts.each do |post| %>
+      <%= cl_image_tag post.photo, height: 300, width: 300, crop: :fill %>
+      <p><%= post.description %></p>
+    <% end %>
+  </div>
+</div>

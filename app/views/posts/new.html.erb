@@ -3,6 +3,8 @@
 <%= simple_form_for(@post, html: { class: 'form-inline' }) do |f| %>
   <%= f.label :description %>
   <%= f.text_area :description %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
   <br>
   <%= f.submit "Submit" %>
 <% end %>
