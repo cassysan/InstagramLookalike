@@ -6,4 +6,18 @@ html {
   margin: 30px;
   margin-top: 75px;
   text-align: center;
+  background-color: #e8e8ee;
+}
+body {
+  background-color: #e8e8ee;
+}
+
+.posts {
+  display: flex;
+}
+
+.post {
+  margin: 10px;
+  padding: 10px;
+  background-color: white;
 }

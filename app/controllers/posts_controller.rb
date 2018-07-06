@@ -10,7 +10,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      render :new
+      flash[:error] = @post.errors.full_messages
+      render 'new'
     end
   end
 
