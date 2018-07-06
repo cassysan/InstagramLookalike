@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :post_params, :set_post, only: [:update, :destroy]
+  before_action :post_params, :set_post, only: [:show, :update, :destroy]
 
   def new
     @post = Post.new
@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
     if @post.save
       redirect_to posts_path
     else
@@ -20,7 +21,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    # @comments =
+    @comments = Comment.all
+    @comment = Comment.new
+
+  end
+
+  def profile
+    @user = User.find(:id)
+    @posts = Post.where(user_id === @user)
   end
 
   private
@@ -30,6 +38,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:description, :photo)
+    params.require(:post).permit(:description, :photo, :photo_cache)
   end
 end
