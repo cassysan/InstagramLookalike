@@ -1,10 +1,12 @@
 <div class="container">
   <div class="posts">
     <% @posts.each do |post| %>
+      <%= link_to post_path(post) do %>
       <div class="post">
         <%= cl_image_tag post.photo, height: 300, width: 300, crop: :fill, class: "post-img" %>
         <p><%= post.description %></p>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,2 +1,7 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%= cl_image_tag @post.photo, height: 600, width: 600, crop: :fill, class: "post-img" %>
+<%= link_to "Add Comment", new_post_comment_path(@post) %>
+<br>
+<% @comments.each do |comment| %>
+  <p><%= comment.user %></p>
+  <p><%= comment.text %></p>
+<% end %>

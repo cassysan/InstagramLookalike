@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :post_params, :set_post, only: [:show, :update, :destroy]
-
+  before_action :post_params, only: [:update, :destroy]
+  before_action :set_post, only: [:show, :update, :destroy]
   def new
     @post = Post.new
   end
@@ -21,9 +21,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comments = Comment.all
-    @comment = Comment.new
-
+    @comments = Comment.where('post_id' === @post.id)
   end
 
   def profile
