@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_writer :login
   has_many :posts
   has_many :comments
   validates :username, uniqueness: true
@@ -7,4 +8,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+
+  def login
+    @login || self.username || self.email
+  end
 end
